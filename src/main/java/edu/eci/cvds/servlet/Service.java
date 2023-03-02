@@ -19,31 +19,31 @@ in.close();
 return todo;
 }
 private static String todoToHTMLRow(Todo todo) {
-return new StringBuilder("<tr>")
-.append("<td>")
-.append(todo.getUserId())
-.append("</td><td>")
-.append(todo.getId())
-.append("</td><td>")
-.append(todo.getTitle())
-.append("</td><td>")
-.append(todo.getCompleted())
-.append("</td>")
-.append("</tr>")
-.toString();
-}
+    return new StringBuilder("<tr>")
+    .append("<td>")
+    .append(todo.getUserId())
+    .append("</td><td>")
+    .append(todo.getId())
+    .append("</td><td>")
+    .append(todo.getTitle())
+    .append("</td><td>")
+    .append(todo.getCompleted())
+    .append("</td>")
+    .append("</tr>")
+    .toString();
+    }
+    
 public static String todosToHTMLTable(List<Todo> todoList) {
-StringBuilder stringBuilder = new StringBuilder("<table>")
-.append("<tr>")
-.append("<th>User Id</th>")
-.append("<th>Id</th>")
-.append("<th>Title</th>")
-.append("<th>Completed</th>")
-.append("</tr>");
-for (Todo todo : todoList) {
-stringBuilder.append(todoToHTMLRow(todo));
-
-}
-return stringBuilder.append("</table>").toString();
-}
+    StringBuilder stringBuilder = new StringBuilder("<table>")
+    .append("<tr>")
+    .append("<th>User Id</th>")
+    .append("<th>Id</th>")
+    .append("<th>Title</th>")
+    .append("<th>Completed</th>")
+    .append("</tr>");
+    for (Todo todo : todoList) {
+        stringBuilder.append(todoToHTMLRow(todo));
+        }
+    return stringBuilder.append("</table>").toString();
+        }
 }

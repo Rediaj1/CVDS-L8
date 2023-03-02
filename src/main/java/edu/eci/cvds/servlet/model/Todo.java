@@ -3,7 +3,7 @@ package edu.eci.cvds.servlet.model;
 public class Todo {
     private int userId;
     private int Id;
-    private String tittle;
+    private String title;
     private String completed;
     public Todo() {
 
@@ -15,13 +15,13 @@ public class Todo {
         return Id;
     }
     public String getTitle(){
-        return tittle;
+        return title;
     }
     public String getCompleted(){ 
         return completed;
     } 
     public void setTitle(String newTittle){
-        tittle = newTittle;
+        title = newTittle;
     }
     public void setCompleted(String newCompleted){ 
         completed = newCompleted;
