@@ -5,9 +5,10 @@ import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.Random;
 @ManagedBean(name = "guessBean")
-@SessionScoped
+@ApplicationScoped
 public class guessBean {
     private int guessNumber;
+    private int numberAttemp;
     private int attempts;
     private int prize;
     private String state;
@@ -30,6 +31,12 @@ public class guessBean {
     public String getState(){
         return state;
     }
+    public int numberAttemp(){
+        return numberAttemp;
+    }
+    public void setnumberAttemp(int numberAttemps){
+        attempts = numberAttemps;
+    }
     public void setAttempts(int newAttempt){
         attempts = newAttempt;
     }
@@ -42,6 +49,27 @@ public class guessBean {
     }
     public void setState(String newState){
         state = newState;
+    }
+    public void gess(int attemp) {
+        if (attemp == guessNumber) {
+            state = "Has ganado " + String.valueOf(prize) + "$";
+            restart();
+        }
+        else {
+            attempts++;
+            prize -= 10000;
+            if (prize == 0) {
+                state = "Has perdido";
+                restart();
+            }
+        }
+    }
+    public void restart() {
+        attempts = 0;
+        prize = 100000;
+        state = "No ha ganado";
+        Random random = new Random();
+        guessNumber = random.nextInt(100) + 1;
     }
     
 }
