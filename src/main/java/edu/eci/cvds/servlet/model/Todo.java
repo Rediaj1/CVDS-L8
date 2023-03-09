@@ -1,17 +1,17 @@
 package edu.eci.cvds.servlet.model;
 
 public class Todo {
-    private int userId;
-    private int Id;
+    private String userId;
+    private String Id;
     private String title;
     private String completed;
     public Todo() {
 
     }
-    public int getUserId(){
+    public String getUserId(){
         return userId;
     }
-    public int getId(){
+    public String getId(){
         return Id;
     }
     public String getTitle(){
@@ -26,10 +26,10 @@ public class Todo {
     public void setCompleted(String newCompleted){ 
         completed = newCompleted;
     }
-    public void setUserId(int newUserId){
+    public void setUserId(String newUserId){
         userId = newUserId;
     }
-    public int setId(){
+    public String setId(){
         return Id;
     }
 
