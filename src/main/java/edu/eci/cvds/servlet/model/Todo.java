@@ -1,36 +1,36 @@
 package edu.eci.cvds.servlet.model;
 
 public class Todo {
-    private String userId;
-    private String Id;
+    private int userId;
+    private int Id;
     private String title;
-    private String completed;
+    private boolean completed;
     public Todo() {
 
     }
-    public String getUserId(){
+    public int getUserId(){
         return userId;
     }
-    public String getId(){
+    public int getId(){
         return Id;
     }
     public String getTitle(){
         return title;
     }
-    public String getCompleted(){ 
+    public boolean getCompleted(){ 
         return completed;
     } 
     public void setTitle(String newTittle){
         title = newTittle;
     }
-    public void setCompleted(String newCompleted){ 
+    public void setCompleted(boolean newCompleted){ 
         completed = newCompleted;
     }
-    public void setUserId(String newUserId){
+    public void setUserId(int newUserId){
         userId = newUserId;
     }
-    public String setId(){
-        return Id;
+    public void setId(int newId){
+        Id = newId;
     }
 
     

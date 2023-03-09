@@ -19,19 +19,23 @@ import java.util.*;
 public class sonHttpServlet extends HttpServlet {
 
     static final long serialVersionUID = 35L;
+    static Todo todo;
+    ArrayList<Todo> thingsToDo;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Writer responseWriter = resp.getWriter();
         String trouble = "";
         try {
-            Optional<String> optID = Optional.ofNullable(req.getParameter("id"));
-            int ID = Integer.valueOf(optID.get());
-            Todo todo = Service.getTodo(ID);
-            List<Todo> thingsToDo = new ArrayList<Todo>();
+            int ID = Integer.parseInt(req.getParameter("id"));
+            thingsToDo = new ArrayList<Todo>();
+            while(ID > 0){
+                thingsToDo.add(Service.getTodo(ID));
+                ID--;
+            }
             resp.setStatus(HttpServletResponse.SC_OK);
-            thingsToDo.add(todo);
             responseWriter.write(Service.todosToHTMLTable(thingsToDo));
+            resp.setContentType("text/html");
         } catch (Exception error) {
             if (error instanceof FileNotFoundException) {
                 resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -44,7 +48,7 @@ public class sonHttpServlet extends HttpServlet {
                 trouble = "Error interno en el servidor; ERROR 500";
             } else {
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                trouble = "Requerimiento inválido; ERROR 400";
+                trouble = "Requerimiento inválido: "+error.getMessage();
             }
         } finally {
             responseWriter.write(trouble);
@@ -56,7 +60,7 @@ public class sonHttpServlet extends HttpServlet {
         Optional<String> optID = Optional.ofNullable(req.getParameter("id"));
         int id = optID.isPresent() ? Integer.parseInt(optID.get()) : -1;
         Writer responseWriter = resp.getWriter();
-        responseWriter.write(id+"was added");
+        responseWriter.write(id+" was added");
 
     }
 }

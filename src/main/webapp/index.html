@@ -5,19 +5,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
+        <center><h1>Hello World!</h1></center>
         <script>
             function submitForm() {
                 if (isNaN(document.forms["completeForm"]["numberId"].value)) {
-                    alert("debe ingresar un numero");
+                    alert("Ingrese un número");
                     return false;
                 }
             }
         </script>
-        <h1>Hello World!</h1>
-        <form name="formid" action="/sonHttpServlet" method="GET">
-            <label ><h1>Ingrese el número del id</h1></label><br>
-            <input id="number" name="id"  placeholder="Ingresar el número del id" ><br>
-            <input id="submit" type="submit" value="Enviar" onclick="submitForm()">
-        </form>
+        <center>
+            <form name="formid" action="/sonHttpServlet" method="GET">
+                <input id="number" name="id"  placeholder="Ingrese ID" ><br>
+                <input id="submit" type="submit" value="Enviar" onclick="submitForm()">
+            </form>
+        </center>
+        
     </body>
+    
+
 </html>
