@@ -5,10 +5,29 @@
     <h:head>
     </h:head>
     <h:body>
-        <center><h1>Hello World!</h1></center>
+        <center><h1>GuessBean</h1></center>
+        <center>
         <h:form id="guess_form">
             <p:outputLabel style="display:none" value = "#{guessBean.guessNumber}"/>
-            <p:inputText value = "#{guessBean.numberAttemp}"/>
-        </h:form>   
+            <p:panelGrid columns="2">
+            <p:panelGrid columns="1">
+                <p:inputText value = "#{guessBean.numberAttemp}"/>
+                <p:outputLabel value = " Numero De Intentos: #{guessBean.attempts}"/>
+                <p:outputLabel value = " Estado: #{guessBean.state}"/>
+                <p:outputLabel value = " Premio: #{guessBean.prize}"/>
+                <p:commandButton value = "Jugar" update="guess_form" actionListener="#{guessBean.guess()}"/>
+                <p:commandButton value = "Reiniciar" update="guess_form" actionListener="#{guessBean.restart()}"/>
+            </p:panelGrid>
+            <p:panelGrid columns="1">
+            <p:dataTable value="#{guessBean.numbers}" var="number" varStatus="status">
+                    <p:column headerText="Used Numbers">
+                        <h:outputText value="#{number}" />
+                    </p:column>
+            </p:dataTable>
+            </p:panelGrid>
+        </p:panelGrid>
+        </h:form>
+        
+        </center>   
     </h:body>
 </html>
